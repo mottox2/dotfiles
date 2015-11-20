@@ -18,8 +18,27 @@ set t_Co=256
 set showmode
 set showcmd
 set scrolloff=5
+set cursorline
+set hlsearch
+
+set backspace=indent,eol,start
+"set cursorcolumn
+
+
+if has("autocmd")
+  augroup redhat
+    " In text files, always limit the width of text to 78 characters
+    autocmd BufRead *.txt set tw=78
+    " When editing a file, always jump to the last cursor position
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+  augroup END
+endif
 
 colorscheme railscasts
+hi Search                    guibg=#5A647E ctermfg=NONE ctermbg=117 cterm=underline
 
 filetype indent on
 syntax enable
@@ -43,14 +62,25 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Add or remove your Bundles here:
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'itchyny/lightline.vim'
-"NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'taichouchou2/html5.vim'
 NeoBundle 'Shougo/neocomplcache'
+NeoBundle "Shougo/neosnippet"
+NeoBundle "Shougo/neosnippet-snippets"
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'yegappan/mru'
+" NeoBundle 'scrooloose/syntastic'
+
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline'
+
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'slim-template/vim-slim'
+NeoBundle 'cakebaker/scss-syntax.vim'
+
+" vim 7.4 later
+NeoBundle 'todesking/ruby_hl_lvar.vim'
 
 " Required:
 call neobundle#end()
@@ -58,10 +88,7 @@ call neobundle#end()
 " Required:
 filetype plugin indent on
 
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
 NeoBundleCheck
-"End NeoBundle Scripts-------------------------
 
 nnoremap ;p :set paste! paste?<CR>
 nnoremap ;h :noh<CR>
@@ -69,10 +96,32 @@ nnoremap ;n :set number! number?<CR>
 nnoremap Y y$
 nnoremap ;f :NERDTree<CR>
 nnoremap ;o :Unite outline<CR>
+nnoremap ;remove :%s/\s\+$//ge<CR>
+
+nnoremap <silent> <TAB>c :tabnew<CR>
+nnoremap <silent> <TAB>n :tabnext<CR>
+nnoremap <silent> <TAB>w :tabclose<CR>
+nnoremap <silent> <TAB><S-w> :tabonly<CR>
+nnoremap <silent> <TAB>1 :tabn 1<CR>
+nnoremap <silent> <TAB>2 :tabn 2<CR>
+nnoremap <silent> <TAB>3 :tabn 3<CR>
+nnoremap <silent> <TAB>4 :tabn 4<CR>
+nnoremap <silent> <TAB>5 :tabn 5<CR>
+nnoremap <silent> <TAB><TAB> :tabnext <CR>
+nnoremap <silent> <TAB><RIGHT> :tabnext <CR>
+nnoremap <silent> <TAB><LEFT> :tabprevious <CR>
+
+let MRU_Auto_Close=1
+let MRU_Window_Height=15
+let MRU_Max_Entries=100
+let MRU_Window_Open_Always=1
+let MRU_Open_File_Use_Tabs=1
+nnoremap R :MRU<CR>
 
 au BufRead,BufNewFile *.scss set filetype=sass
+au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
 
-if v:version >= 700 
+if v:version >= 700
   nnoremap !r :R<CR>
   nnoremap !R :call OpenNewTab()<CR>:R<CR>
   function! OpenNewTab()
@@ -90,7 +139,7 @@ let g:lightline = {
 let g:unite_data_directory = '~/'
 let g:unite_abbr_highlight = 'Nomal'
 
-" neocomplcache
+"neocomplcache
 let g:neocomplete#enable_at_startup = 1
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -137,8 +186,16 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333344 ctermbg=236
 let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 30
 
+let g:NERDTreeDirArrows=1
+
 "autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 autocmd VimEnter * wincmd p
+autocmd BufWritePre * :%s/\s\+$//e
 
-let g:NERDTreeDirArrows=1
+"jslint
+"let g:syntastic_mode_map = { 'mode': 'passive',
+"                           \ 'active_filetypes': [],
+"                           \ 'passive_filetypes': [] }
+"let g:syntastic_javascript_jslint_conf = "--white --undef --nomen --regexp --plusplus --bitwise --newcap --sloppy --vars"
+
