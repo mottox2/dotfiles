@@ -20,15 +20,13 @@ set showcmd
 set scrolloff=5
 set cursorline
 set hlsearch
+set incsearch
+set laststatus=2
 
 set backspace=indent,eol,start
-"set cursorcolumn
-
 
 if has("autocmd")
   augroup redhat
-    " In text files, always limit the width of text to 78 characters
-    autocmd BufRead *.txt set tw=78
     " When editing a file, always jump to the last cursor position
     autocmd BufReadPost *
     \ if line("'\"") > 0 && line ("'\"") <= line("$") |
@@ -59,28 +57,33 @@ call neobundle#begin(expand('~/.vim/bundle'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Add or remove your Bundles here:
 NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'basyura/unite-rails'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle "Shougo/neosnippet"
-NeoBundle "Shougo/neosnippet-snippets"
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'yegappan/mru'
-" NeoBundle 'scrooloose/syntastic'
+NeoBundle "ctrlpvim/ctrlp.vim"
+
+NeoBundle 'Shougo/neocomplete'
+NeoBundle "Shougo/neosnippet"
+NeoBundle "Shougo/neosnippet-snippets"
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
 
+NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'cakebaker/scss-syntax.vim'
 
-" vim 7.4 later
-NeoBundle 'todesking/ruby_hl_lvar.vim'
+" NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'Shougo/neocomplcache'
+"
+" NeoBundle 'YankRing.vim'
+" nmap sp :YRShow<CR>
 
 " Required:
 call neobundle#end()
@@ -139,41 +142,36 @@ let g:lightline = {
 let g:unite_data_directory = '~/'
 let g:unite_abbr_highlight = 'Nomal'
 
-"neocomplcache
+" neocomplete
 let g:neocomplete#enable_at_startup = 1
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_underbar_completion = 1
+let g:neocomplete#enable_camel_case_completion  =  1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+      \ }
 
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-\ 'default' : ''
-\ }
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplcache#smart_close_popup() . "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
-" end neocomplcache
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" END neocomplete
+
 
 " indent guide
 let g:indent_guides_enable_on_vim_startup=1
@@ -183,7 +181,7 @@ let g:indent_guides_start_level=2
 let g:indent_guides_auto_colors=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#444433 ctermbg=239
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333344 ctermbg=236
-let g:indent_guides_guide_size = 1
+let g:indent_guides_guide_size = 2
 let g:indent_guides_color_change_percent = 30
 
 let g:NERDTreeDirArrows=1
@@ -199,3 +197,5 @@ autocmd BufWritePre * :%s/\s\+$//e
 "                           \ 'passive_filetypes': [] }
 "let g:syntastic_javascript_jslint_conf = "--white --undef --nomen --regexp --plusplus --bitwise --newcap --sloppy --vars"
 
+" ctrlp
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|vendor\|tmp'
