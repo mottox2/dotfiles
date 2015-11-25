@@ -61,7 +61,7 @@ NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'bling/vim-airline'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'yegappan/mru'
@@ -199,3 +199,18 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|vendor\|tmp'
+
+" Airline
+let g:airline_section_a = airline#section#create(['mode','','branch'])
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:Powerline_symbols = 'fancy'
+let g:airline_theme='badwolf'
+
+let g:airline_left_sep = ' '
+let g:airline_right_sep = ' '
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ' '
