@@ -65,11 +65,11 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'yegappan/mru'
-NeoBundle "ctrlpvim/ctrlp.vim"
+NeoBundle 'ctrlpvim/ctrlp.vim'
 
 NeoBundle 'Shougo/neocomplete'
-NeoBundle "Shougo/neosnippet"
-NeoBundle "Shougo/neosnippet-snippets"
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
@@ -78,6 +78,7 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle 'digitaltoad/vim-jade'
 
 " NeoBundle 'scrooloose/syntastic'
 " NeoBundle 'Shougo/neocomplcache'
