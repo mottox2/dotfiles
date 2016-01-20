@@ -66,6 +66,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'yegappan/mru'
 NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'junegunn/vim-easy-align'
 
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
@@ -215,3 +216,6 @@ let g:airline_left_sep = ' '
 let g:airline_right_sep = ' '
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ' '
+
+" EasyAlign
+vmap <Enter> <Plug>(EasyAlign)
