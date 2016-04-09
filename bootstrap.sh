@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# TODO: if OS X
+# install homebrew
+# brew install fish
+# brew install peco
+# brew install ghq
+# brew install hub
+# brew install ctags
+
 if [ -a $HOME/.vimrc ]; then
   rm $HOME/.vimrc
 fi
