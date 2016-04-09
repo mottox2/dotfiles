@@ -81,6 +81,9 @@ NeoBundle 'slim-template/vim-slim'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'digitaltoad/vim-jade'
 
+NeoBundle 'itchyny/vim-parenmatch'
+NeoBundle 'itchyny/vim-cursorword'
+
 " NeoBundle 'scrooloose/syntastic'
 " NeoBundle 'Shougo/neocomplcache'
 "
@@ -219,3 +222,6 @@ let g:airline#extensions#tabline#left_alt_sep = ' '
 
 " EasyAlign
 vmap <Enter> <Plug>(EasyAlign)
+
+" Parenmatchにカッコ処理を任せるので標準機能の無効化
+let g:loaded_matchparen = 1
