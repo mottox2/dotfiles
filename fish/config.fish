@@ -28,7 +28,19 @@ alias github="hub browse"
 alias config="vim ~/.config/fish/config.fish"
 alias reload="source ~/.config/fish/config.fish"
 
-# envs
+#= envs
+
+# fisherman
 set fisher_home ~/.local/share/fisherman
 set fisher_config ~/.config/fisherman
 source $fisher_home/config.fish
+
+# key bindings
+function fish_user_key_bindings
+  # $ fisher install yoshiori/fish-peco_select_ghq_repository
+  # https://github.com/yoshiori/fish-peco_select_ghq_repository
+  bind \c] peco_select_ghq_repository
+
+  # TODO: bash like history using peco
+  #bind \cr peco_select_history
+end
