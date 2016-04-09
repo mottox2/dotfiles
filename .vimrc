@@ -80,6 +80,7 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'dag/vim-fish'
 
 NeoBundle 'itchyny/vim-parenmatch'
 NeoBundle 'itchyny/vim-cursorword'
