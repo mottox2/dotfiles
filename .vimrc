@@ -195,7 +195,7 @@ let g:NERDTreeDirArrows=1
 "autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 autocmd VimEnter * wincmd p
-autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\s\+$//e
 
 "jslint
 "let g:syntastic_mode_map = { 'mode': 'passive',
@@ -204,7 +204,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 "let g:syntastic_javascript_jslint_conf = "--white --undef --nomen --regexp --plusplus --bitwise --newcap --sloppy --vars"
 
 " ctrlp
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|vendor\|tmp'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|build|bundle/vendor)$'
+set wildignore+=*/tmp/*,*/db/*,*.sample
 
 " Airline
 let g:airline_section_a = airline#section#create(['mode','','branch'])
@@ -214,7 +215,7 @@ let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:Powerline_symbols = 'fancy'
-let g:airline_theme='badwolf'
+"let g:airline_theme='badwolf'
 
 let g:airline_left_sep = ' '
 let g:airline_right_sep = ' '
