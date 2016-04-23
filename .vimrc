@@ -204,7 +204,7 @@ autocmd VimEnter * wincmd p
 "let g:syntastic_javascript_jslint_conf = "--white --undef --nomen --regexp --plusplus --bitwise --newcap --sloppy --vars"
 
 " ctrlp
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|build|bundle/vendor)$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|build|vendor/bundle)$'
 set wildignore+=*/tmp/*,*/db/*,*.sample
 
 " Airline
