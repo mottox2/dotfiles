@@ -64,7 +64,6 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'rking/ag.vim'
-NeoBundle 'yegappan/mru'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'junegunn/vim-easy-align'
 
@@ -119,13 +118,6 @@ nnoremap <silent> <TAB>5 :tabn 5<CR>
 nnoremap <silent> <TAB><TAB> :tabnext <CR>
 nnoremap <silent> <TAB><RIGHT> :tabnext <CR>
 nnoremap <silent> <TAB><LEFT> :tabprevious <CR>
-
-let MRU_Auto_Close=1
-let MRU_Window_Height=15
-let MRU_Max_Entries=100
-let MRU_Window_Open_Always=1
-let MRU_Open_File_Use_Tabs=1
-nnoremap R :MRU<CR>
 
 au BufRead,BufNewFile *.scss set filetype=sass
 au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
@@ -204,7 +196,13 @@ autocmd VimEnter * wincmd p
 "let g:syntastic_javascript_jslint_conf = "--white --undef --nomen --regexp --plusplus --bitwise --newcap --sloppy --vars"
 
 " ctrlp
+let g:ctrlp_match_window = 'min:1,max:20,results:20'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|build|vendor/bundle|vendor/etc)$'
+
+let g:ctrlp_mruf_exclude = '\v[\/](node_modules|build|vendor/bundle|vendor/etc)$'
+let g:ctrlp_mruf_relative = 0
+let g:ctrlp_mruf_max = 100
+nnoremap R :CtrlPMRUFiles<CR>
 set wildignore+=*/tmp/*,*/db/*,*.sample
 
 " Airline
