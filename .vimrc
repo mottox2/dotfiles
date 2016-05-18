@@ -106,6 +106,8 @@ nnoremap ;f :NERDTree<CR>
 nnoremap ;o :Unite outline<CR>
 nnoremap ;remove :%s/\s\+$//ge<CR>
 
+nnoremap ;g :<C-u>!git<Space>
+
 nnoremap <silent> <TAB>c :tabnew<CR>
 nnoremap <silent> <TAB>n :tabnext<CR>
 nnoremap <silent> <TAB>w :tabclose<CR>
@@ -119,8 +121,12 @@ nnoremap <silent> <TAB><TAB> :tabnext <CR>
 nnoremap <silent> <TAB><RIGHT> :tabnext <CR>
 nnoremap <silent> <TAB><LEFT> :tabprevious <CR>
 
+imap <c-e> <end>
+imap <c-a> <home>
+
 au BufRead,BufNewFile *.scss set filetype=sass
 au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
+au BufNewFile,BufRead *.json.jbuilder set ft=ruby
 
 if v:version >= 700
   nnoremap !r :R<CR>
@@ -203,6 +209,7 @@ let g:ctrlp_mruf_exclude = '\v[\/](node_modules|build|vendor/bundle|vendor/etc)$
 let g:ctrlp_mruf_relative = 0
 let g:ctrlp_mruf_max = 100
 nnoremap R :CtrlPMRUFiles<CR>
+nnoremap ;; :CtrlPBuffer<CR>
 set wildignore+=*/tmp/*,*/db/*,*.sample
 
 " Airline
