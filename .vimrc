@@ -209,8 +209,10 @@ let g:ctrlp_mruf_exclude = '\v[\/](node_modules|build|vendor/bundle|vendor/etc|p
 let g:ctrlp_mruf_relative = 0
 let g:ctrlp_mruf_max = 100
 
-let g:ctrlp_use_caching= 0
-let g:ctrlp_user_command='ag %s -i --nocolor --nogroup -g ""'
+if executable('ag')
+  let g:ctrlp_use_caching= 0
+  let g:ctrlp_user_command='ag %s -i --nocolor --nogroup -g ""'
+endif
 
 nnoremap R :CtrlPMRUFiles<CR>
 nnoremap ;; :CtrlPBuffer<CR>
