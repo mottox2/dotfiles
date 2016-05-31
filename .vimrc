@@ -202,21 +202,23 @@ autocmd BufWritePre * :%s/\s\+$//e
 "let g:syntastic_javascript_jslint_conf = "--white --undef --nomen --regexp --plusplus --bitwise --newcap --sloppy --vars"
 
 " ctrlp
-let g:ctrlp_match_window = 'min:1,max:20,results:20'
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|build|vendor/bundle|vendor/etc|public/assets)$'
+let g:ctrlp_match_window        = 'min:1,max:20,results:20'
+let g:ctrlp_custom_ignore       = '\v[\/](node_modules|build|vendor/bundle|vendor/etc|public/assets)$'
 
-let g:ctrlp_mruf_exclude = '\v[\/](node_modules|build|vendor/bundle|vendor/etc|public/assets)$'
-let g:ctrlp_mruf_relative = 0
-let g:ctrlp_mruf_max = 100
+let g:ctrlp_mruf_exclude        = '\v[\/](node_modules|build|vendor/bundle|vendor/etc|public/assets)$'
+let g:ctrlp_mruf_relative       = 0
+let g:ctrlp_mruf_max            = 100
+let g:ctrlp_clear_cache_on_exit = 0 " 終了時キャッシュをクリアしない
+let g:ctrlp_jump_to_buffer      = 2 " タブで開かれていた場合はそのタブに切り替える
 
 if executable('ag')
-  let g:ctrlp_use_caching= 0
-  let g:ctrlp_user_command='ag %s -i --nocolor --nogroup -g ""'
+  let g:ctrlp_use_caching  = 0
+  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
 endif
 
 nnoremap R :CtrlPMRUFiles<CR>
 nnoremap ;; :CtrlPBuffer<CR>
-set wildignore+=*/tmp/*,*/db/*,*.sample
+set wildignore+=*/tmp/*,*/db/*,*.sample,*/.git/*
 
 " Airline
 let g:airline_section_a = airline#section#create(['mode','','branch'])
