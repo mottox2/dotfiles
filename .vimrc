@@ -73,6 +73,7 @@ NeoBundle 'Shougo/neosnippet-snippets'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/vimproc'
 
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
@@ -102,7 +103,7 @@ nnoremap ;p :set paste! paste?<CR>
 nnoremap ;h :noh<CR>
 nnoremap ;n :set number! number?<CR>
 nnoremap Y y$
-nnoremap ;f :NERDTree<CR>
+nnoremap ;f :NERDTreeFind<CR>
 nnoremap ;o :Unite outline<CR>
 nnoremap ;remove :%s/\s\+$//ge<CR>
 
