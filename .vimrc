@@ -66,6 +66,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'junegunn/vim-easy-align'
+NeoBundleLazy 'othree/yajs.vim', {'autoload':{'filetypes':['javascript']}} " ES6 syntax
 
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
