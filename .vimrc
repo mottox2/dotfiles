@@ -74,10 +74,11 @@ NeoBundle 'Shougo/neosnippet-snippets'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/vimproc'
 
 NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle "pangloss/vim-javascript"
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'mxw/vim-jsx'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'digitaltoad/vim-jade'
@@ -209,7 +210,7 @@ let g:ctrlp_custom_ignore       = '\v[\/](node_modules|build|vendor/bundle|vendo
 
 let g:ctrlp_mruf_exclude        = '\v[\/](node_modules|build|vendor/bundle|vendor/etc|public/assets)$'
 let g:ctrlp_mruf_relative       = 0
-let g:ctrlp_mruf_max            = 100
+let g:ctrlp_mruf_max            = 300
 let g:ctrlp_clear_cache_on_exit = 0 " 終了時キャッシュをクリアしない
 let g:ctrlp_jump_to_buffer      = 2 " タブで開かれていた場合はそのタブに切り替える
 
@@ -239,6 +240,9 @@ let g:airline#extensions#tabline#left_alt_sep = ' '
 
 " EasyAlign
 vmap <Enter> <Plug>(EasyAlign)
+
+" Vim-jsx
+let g:jsx_ext_required = 0
 
 " Parenmatchにカッコ処理を任せるので標準機能の無効化
 let g:loaded_matchparen = 1
