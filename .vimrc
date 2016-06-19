@@ -103,7 +103,6 @@ NeoBundleCheck
 
 nnoremap ;p :set paste! paste?<CR>
 nnoremap ;h :noh<CR>
-nnoremap <Esc><Esc> :noh<CR><Esc>
 nnoremap ;n :set number! number?<CR>
 nnoremap Y y$
 nnoremap ;f :NERDTreeFind<CR>
