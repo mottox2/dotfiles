@@ -127,7 +127,7 @@ nnoremap <silent> <TAB><LEFT> :tabprevious <CR>
 imap <c-e> <end>
 imap <c-a> <home>
 
-au BufRead,BufNewFile *.scss set filetype=sass
+au BufRead,BufNewFile *.scss set filetype=scss.css
 au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
 au BufNewFile,BufRead *.json.jbuilder set ft=ruby
 
