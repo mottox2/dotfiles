@@ -86,6 +86,7 @@ NeoBundle 'dag/vim-fish'
 
 NeoBundle 'itchyny/vim-parenmatch'
 NeoBundle 'itchyny/vim-cursorword'
+NeoBundle 'tomtom/tcomment_vim'
 
 " NeoBundle 'scrooloose/syntastic'
 " NeoBundle 'Shougo/neocomplcache'
