@@ -22,3 +22,7 @@ if [ -a $HOME/.config/fish/config.fish ]; then
   rm $HOME/.config/fish/config.fish
 fi
 ln -f $HOME/dotfiles/fish/config.fish $HOME/.config/fish/
+
+# Install dein.vim
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+sh ./installer.sh  ~/.vim/dein

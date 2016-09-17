@@ -41,6 +41,43 @@ hi Search                    guibg=#5A647E ctermfg=NONE ctermbg=117 cterm=underl
 filetype indent on
 syntax enable
 
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible " Be iMproved
+endif
+
+" Required:
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+call dein#begin('~/.vim/dein')
+
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
+
+" Add or remove your plugins here:
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
+
+" You can specify revision/branch/tag.
+call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+" Required:
+call dein#end()
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
+
+
 if has('vim_starting')
   if &compatible
     set nocompatible               " Be iMproved
@@ -115,7 +152,7 @@ nnoremap ;g :<C-u>!git<Space>
 nnoremap <silent> <TAB>c :tabnew<CR>
 nnoremap <silent> <TAB>n :tabnext<CR>
 nnoremap <silent> <TAB>w :tabclose<CR>
-nnoremap <silent> <TAB><S-w> :tabonly<CR>
+nnoremap <silent> <TAB>o :tabonly<CR>
 nnoremap <silent> <TAB>1 :tabn 1<CR>
 nnoremap <silent> <TAB>2 :tabn 2<CR>
 nnoremap <silent> <TAB>3 :tabn 3<CR>
