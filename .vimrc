@@ -38,9 +38,6 @@ endif
 colorscheme railscasts
 hi Search                    guibg=#5A647E ctermfg=NONE ctermbg=117 cterm=underline
 
-filetype indent on
-syntax enable
-
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible " Be iMproved
@@ -57,15 +54,14 @@ call dein#begin('~/.vim/dein')
 call dein#add('Shougo/dein.vim')
 
 call dein#add( 'tpope/vim-rails')
-call dein#add( 'tpope/vim-fugitive')
+call dein#add( 'tpope/vim-fugitive', { 'lazy': 1 })
 call dein#add( 'basyura/unite-rails')
-call dein#add( 'scrooloose/nerdtree')
+call dein#add( 'scrooloose/nerdtree', { 'lazy' : 1 })
 call dein#add( 'bling/vim-airline')
 call dein#add( 'nathanaelkane/vim-indent-guides')
 call dein#add( 'rking/ag.vim')
 call dein#add( 'ctrlpvim/ctrlp.vim')
 call dein#add( 'junegunn/vim-easy-align')
-call dein#add( 'othree/yajs.vim')
 
 call dein#add( 'Shougo/neocomplete')
 call dein#add( 'Shougo/neosnippet')
@@ -75,7 +71,7 @@ call dein#add( 'Shougo/unite.vim')
 call dein#add( 'Shougo/unite-outline')
 
 call dein#add( 'hail2u/vim-css3-syntax')
-call dein#add( "pangloss/vim-javascript")
+call dein#add( 'othree/yajs.vim', { 'on_ft': 'javascript' })
 call dein#add( 'kchmck/vim-coffee-script')
 call dein#add( 'mxw/vim-jsx')
 call dein#add( 'slim-template/vim-slim')
