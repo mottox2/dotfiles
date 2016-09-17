@@ -56,12 +56,41 @@ call dein#begin('~/.vim/dein')
 " Required:
 call dein#add('Shougo/dein.vim')
 
-" Add or remove your plugins here:
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
+call dein#add( 'tpope/vim-rails')
+call dein#add( 'tpope/vim-fugitive')
+call dein#add( 'basyura/unite-rails')
+call dein#add( 'scrooloose/nerdtree')
+call dein#add( 'bling/vim-airline')
+call dein#add( 'nathanaelkane/vim-indent-guides')
+call dein#add( 'rking/ag.vim')
+call dein#add( 'ctrlpvim/ctrlp.vim')
+call dein#add( 'junegunn/vim-easy-align')
+call dein#add( 'othree/yajs.vim')
 
-" You can specify revision/branch/tag.
-call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+call dein#add( 'Shougo/neocomplete')
+call dein#add( 'Shougo/neosnippet')
+call dein#add( 'Shougo/neosnippet-snippets')
+
+call dein#add( 'Shougo/unite.vim')
+call dein#add( 'Shougo/unite-outline')
+
+call dein#add( 'hail2u/vim-css3-syntax')
+call dein#add( "pangloss/vim-javascript")
+call dein#add( 'kchmck/vim-coffee-script')
+call dein#add( 'mxw/vim-jsx')
+call dein#add( 'slim-template/vim-slim')
+call dein#add( 'cakebaker/scss-syntax.vim')
+call dein#add( 'digitaltoad/vim-jade')
+call dein#add( 'dag/vim-fish')
+
+call dein#add( 'itchyny/vim-parenmatch')
+call dein#add( 'itchyny/vim-cursorword')
+call dein#add( 'tomtom/tcomment_vim')
+
+" call dein#add( 'scrooloose/syntastic')
+" call dein#add( 'Shougo/neocomplcache')
+"
+" call dein#add( 'YankRing.vim')
 
 " Required:
 call dein#end()
@@ -76,68 +105,6 @@ if dein#check_install()
 endif
 
 "End dein Scripts-------------------------
-
-
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-" Required:
-call neobundle#begin(expand('~/.vim/bundle'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'basyura/unite-rails'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundleLazy 'othree/yajs.vim', {'autoload':{'filetypes':['javascript']}} " ES6 syntax
-
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline'
-
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle "pangloss/vim-javascript"
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'mxw/vim-jsx'
-NeoBundle 'slim-template/vim-slim'
-NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle 'digitaltoad/vim-jade'
-NeoBundle 'dag/vim-fish'
-
-NeoBundle 'itchyny/vim-parenmatch'
-NeoBundle 'itchyny/vim-cursorword'
-NeoBundle 'tomtom/tcomment_vim'
-
-" NeoBundle 'scrooloose/syntastic'
-" NeoBundle 'Shougo/neocomplcache'
-"
-" NeoBundle 'YankRing.vim'
-" nmap sp :YRShow<CR>
-
-" Required:
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-NeoBundleCheck
 
 nnoremap ;p :set paste! paste?<CR>
 nnoremap ;h :noh<CR>
