@@ -26,3 +26,7 @@ ln -f $HOME/dotfiles/fish/config.fish $HOME/.config/fish/
 # Install dein.vim
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh  ~/.vim/dein
+
+# Add synboric link to nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+
