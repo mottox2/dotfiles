@@ -18,10 +18,13 @@ set t_Co=256
 set showmode
 set showcmd
 set scrolloff=5
-set cursorline
 set hlsearch
 set incsearch
 set laststatus=2
+
+if has('gui_running')
+  set cursorline
+endif
 
 set backspace=indent,eol,start
 
@@ -79,8 +82,12 @@ call dein#add( 'cakebaker/scss-syntax.vim')
 call dein#add( 'digitaltoad/vim-jade')
 call dein#add( 'dag/vim-fish')
 
+if has('nvim')
+  call dein#add('Shougo/deoplete.nvim')
+endif
+
 call dein#add( 'itchyny/vim-parenmatch')
-call dein#add( 'itchyny/vim-cursorword')
+" call dein#add( 'itchyny/vim-cursorword') " FIXME: Slow cursor
 call dein#add( 'tomtom/tcomment_vim')
 
 " call dein#add( 'scrooloose/syntastic')
@@ -101,6 +108,10 @@ if dein#check_install()
 endif
 
 "End dein Scripts-------------------------
+
+if has('nvim')
+  let g:deoplete#enable_at_startup = 1
+endif
 
 nnoremap ;p :set paste! paste?<CR>
 nnoremap ;h :noh<CR>
