@@ -82,6 +82,9 @@ call dein#add( 'cakebaker/scss-syntax.vim')
 call dein#add( 'digitaltoad/vim-jade')
 call dein#add( 'dag/vim-fish')
 
+call dein#add( 'scrooloose/syntastic', { 'on_ft': 'javascript' })
+call dein#add( 'pmsorhaindo/syntastic-local-eslint.vim', { 'on_ft': 'javascript' })
+
 if has('nvim')
   call dein#add('Shougo/deoplete.nvim')
 endif
@@ -210,11 +213,13 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 autocmd VimEnter * wincmd p
 autocmd BufWritePre * :%s/\s\+$//e
 
-"jslint
+"lint
 "let g:syntastic_mode_map = { 'mode': 'passive',
 "                           \ 'active_filetypes': [],
 "                           \ 'passive_filetypes': [] }
 "let g:syntastic_javascript_jslint_conf = "--white --undef --nomen --regexp --plusplus --bitwise --newcap --sloppy --vars"
+"
+let g:syntastic_javascript_checkers=['eslint']
 
 " ctrlp
 let g:ctrlp_match_window        = 'min:1,max:20,results:20'
