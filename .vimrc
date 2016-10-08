@@ -65,6 +65,7 @@ call dein#add( 'nathanaelkane/vim-indent-guides')
 call dein#add( 'rking/ag.vim')
 call dein#add( 'ctrlpvim/ctrlp.vim')
 call dein#add( 'junegunn/vim-easy-align')
+call dein#add( 'tpope/vim-fugitive')
 
 call dein#add( 'Shougo/neocomplete')
 call dein#add( 'Shougo/neosnippet')
@@ -82,18 +83,19 @@ call dein#add( 'cakebaker/scss-syntax.vim')
 call dein#add( 'digitaltoad/vim-jade')
 call dein#add( 'dag/vim-fish')
 
-call dein#add( 'scrooloose/syntastic', { 'on_ft': 'javascript' })
-call dein#add( 'pmsorhaindo/syntastic-local-eslint.vim', { 'on_ft': 'javascript' })
-
 if has('nvim')
   call dein#add('Shougo/deoplete.nvim')
+  call dein#add('neomake/neomake')
+  call dein#add('benjie/neomake-local-eslint.vim')
+else
+  call dein#add( 'scrooloose/syntastic', { 'on_ft': 'javascript' })
+  call dein#add( 'pmsorhaindo/syntastic-local-eslint.vim', { 'on_ft': 'javascript' })
 endif
 
 call dein#add( 'itchyny/vim-parenmatch')
 " call dein#add( 'itchyny/vim-cursorword') " FIXME: Slow cursor
 call dein#add( 'tomtom/tcomment_vim')
 
-" call dein#add( 'scrooloose/syntastic')
 " call dein#add( 'Shougo/neocomplcache')
 "
 " call dein#add( 'YankRing.vim')
@@ -219,7 +221,13 @@ autocmd BufWritePre * :%s/\s\+$//e
 "                           \ 'passive_filetypes': [] }
 "let g:syntastic_javascript_jslint_conf = "--white --undef --nomen --regexp --plusplus --bitwise --newcap --sloppy --vars"
 "
-let g:syntastic_javascript_checkers=['eslint']
+if has('nvim')
+  autocmd! BufWritePost,BufEnter * Neomake
+  let g:neomake_javascript_enabled_makers = ['eslint']
+else
+  let g:syntastic_javascript_checkers=['eslint']
+endif
+
 
 " ctrlp
 let g:ctrlp_match_window        = 'min:1,max:20,results:20'
