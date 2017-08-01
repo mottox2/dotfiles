@@ -1,0 +1,109 @@
+// 既定の設定を上書きするには、このファイル内に設定を挿入します
+{
+  "editor.cursorBlinking": "solid",
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": false,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [ "<C-e>" ],
+      "after": [],
+      "commands": [
+        {
+          "command": "cursorLineEnd"
+        }
+      ]
+    },
+    {
+      "before": [ "<C-a>" ],
+      "after": [],
+      "commands": [
+        {
+          "command": "cursorLineStart"
+        }
+      ]
+    }
+  ],
+  "vim.otherModesKeyBindings": [
+    {
+      "before": [ ";", "f" ],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.files.action.focusFilesExplorer"
+        }
+      ]
+    },
+    {
+      "before": [ ";", "R" ],
+      "after": [],
+      "commands": [
+        {
+          "command": "extension.rails-nav"
+        }
+      ]
+    }
+  ],
+  "vim.otherModesKeyBindingsNonRecursive": [
+    {
+      "before": [ "<leader>", "d" ],
+      "after": [ "d", "d" ]
+    },
+    {
+      "before": [ "<leader>", "d" ],
+      "after": [ "d", "d" ]
+    },
+    // Not working
+    {
+      "before": [ "<leader>", "<leader>" ],
+      "after": [],
+      "commands": [
+        {
+          // "command": "workbench.action.switchWindow"
+          "command": "extension.vim_navigateGroups"
+        }
+      ]
+    },
+    {
+      "before": [ "<leader>", "h" ],
+      "after": [],
+      "commands": [
+        {
+          "command": ":nohl"
+        }
+      ]
+    }
+  ],
+  // "vim.leader": "<space>",
+  "vim.leader": ";",
+  "vim.handleKeys": {
+    "<C-f>": false
+  },
+  "vim.disableAnnoyingNeovimMessage": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "vendor/bundle": true,
+    "tmp": true,
+    "node_modules": true,
+    "coverage/": true,
+    ".tags": true
+  },
+  "editor.tabSize": 2,
+  "editor.wordWrap": "off",
+  "window.zoomLevel": 0,
+  "editor.minimap.enabled": false,
+  "ctags": {
+    "executePath": "/Users˝/yuki/.rbenv/shims/ripper-tags",
+    "options": "--tag-file=.tags --recursive --force --exclude=/assets/ --exclude=.bundle --exclude=.git/ --exclude=coverage/ --exclude=.arcanist-extensions/ --exclude=log/ --exclude=tmp/ --exclude=bin/",
+    "fileName": ".tags"
+  },
+  "editor.renderWhitespace": "boundary",
+  "files.trimTrailingWhitespace": true,
+  "workbench.colorCustomizations": {}
+}
